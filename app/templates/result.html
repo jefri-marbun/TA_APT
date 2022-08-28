@@ -1,0 +1,121 @@
+
+<title>Graph</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<link rel="stylesheet" href="/static/style.css">
+<style>
+    .x{
+        text-align: left;
+    }
+</style>
+
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+ <br><br><br>
+ 
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+
+        <div class="col-8">
+            <table class="table table-sm" >
+                {% for x in data %}
+                <thead style="text-align: center;">
+                  <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">&nbsp&nbsp&nbsp&nbsp</th>
+                    <th scope="col">Result</th>
+                  </tr>
+                </thead>
+                <tbody style="text-align: center;">
+                  <tr>
+                    <td class="x">Antecedents</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp</td>
+                    <td>{{x.antecedents}}</td>
+                  </tr>
+
+                  <tr>
+                    <td class="x">Consequents</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp</td>
+                    <td>{{x.consequents}}</td>
+                  </tr>
+
+                  <tr>
+                    <td class="x">Antecedent support</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp</td>
+                    <td>{{x.antecedent_support}}</td>
+                  </tr>
+
+                  <tr>
+                    <td class="x">Consequent support</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp</td>
+                    <td>{{x.consequent_support}}</td>
+                  </tr>
+
+                  <tr>
+                    <td class="x">Support</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp</td>
+                    <td>{{x.support}}</td>
+                  </tr>
+
+                  <tr>
+                    <td class="x">Confidence</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp</td>
+                    <td>{{x.confidence}}</td>
+                  </tr>
+
+                  <tr>
+                    <td class="x">Lift</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp</td>
+                    <td>{{x.lift}}</td>
+                  </tr>
+
+                  <tr>
+                    <td class="x">Leverage</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp</td>
+                    <td>{{x.leverage}}</td>
+                  </tr>
+
+                  <tr>
+                    <td class="x">Conviction</td>
+                    <td>&nbsp&nbsp&nbsp&nbsp</td>
+                    <td>{{x.conviction}}</td>
+                  </tr>
+                
+                </tbody>
+                {% endfor %}
+              </table>
+        </div>
+
+        <div class="col-2"></div>
+
+    </div>
+</div>
+<br><br>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Quote
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p style="font-size: 17px;text-align: justify;">Produk-produk yang dibeli secara bersamaan oleh customer untuk data Februari Jam Cofe A terhadap rule asosiasi pada dataset dengan min_support 0.01 , min_threshold = 1, dan nilai lift sebesar lebih dari sama dengan 1 serta tingkat confidence minimal yang diperhitungkan sebesar 0.8 (80%) yaitu kategori produk:
+
+          OTHER DRINK dengan COFFEE BASED.
+          Promo MORFIN, DESSERT dengan SPECIAL BLEND, MANUAL BREW, LIGHT MEALS,KONVERSA SIGNATURE,Flavor Latte.
+          SPECIAL BLEND,MANUAL BREW,LIGHT MEALS,FOOD,DESSERT,Flavor Latte dengan KONVERSA SIGNATURE.</p>
+        <footer class="blockquote-footer">Additional Note: Produk atau barang yang menjadi kombinasi produk pertama untuk frekuensi yang paling banyak adalah kosmetik, minuman, sabun dan sampho.</footer>
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

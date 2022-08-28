@@ -1,0 +1,99 @@
+<title>Graph</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<br><br>
+<p>
+    <strong>Coffe Purchase</strong>
+  
+</p>
+ <br>
+<div class="container d-flex flex-column justify-content-center">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 ">
+
+            <canvas id="myChart" width="30" height="30"></canvas>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+
+    
+
+    {% block javascript %}
+    <script>
+
+    
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [
+            {% for x in nama %}"{{ x }}",{% endfor %}
+            ],
+
+            datasets: [{
+                label: 'Average Drink Customer Purchase',
+                data: [
+                {% for y in values %}{{ y }},{% endfor %}
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    
+    </script>
+     
+
+
+</div>    
+
+<br><br>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Conclusion
+    </div>
+    <div class="card-body">
+        
+      <blockquote class="blockquote mb-0">
+        <p style="font-size: 17px;text-align: justify;">The graph above shows that the average sales of cafe drinks are at 06.00-07.00 until 21.00-22.00, so the largest purchase is drinks with category <strong>{{ min_max.max_label }}</strong> and the smallest purchase is drinks with category <strong>{{ min_max.min_label }}</strong></p>
+      </blockquote>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+{% endblock %}
+{% endblock content %}
